@@ -126,7 +126,7 @@ def addorders():
         productid = request.form.get("productid")
         customerid =request.form.get("customerid")
         quantity = request.form.get("quantity")
-        cn.execute(f"insert into orders(product_id, customer_id, quantity) values ('{productid}','{customerid}', {quantity})")
+        cn.execute(f"insert into orders(product_id, customer_id, quantity) values ('{productid}','{customerid}', '{quantity}')")
         conn.commit()
         print('Data has been Inserted')
         return jsonify({'message':'sucessfull'})
@@ -206,6 +206,35 @@ def updatesupplier():
         return jsonify({'message':'sucessfull'})
     else:
         return render_template('updatesuppliers.html')
+    
+
+@app.route('/delete-customer',methods=['GET','POST'])
+def delete_customer():
+    if request.method=='POST':
+        cn=conn.cursor()
+        customerid = request.form.get('customer_id')
+        cn.execute(f"delete from customer where customer_id = '{customerid}'")
+        conn.commit()
+        print('Data has been deleted successfully ')
+        return jsonify({'message':'successful'})
+    else:
+        return render_template('deletecustomer.html')
+    
+
+
+@app.route('/delete-product', methods=['GET', 'POST'])
+def delete_product():
+    if request.method == 'POST':
+        cn = conn.cursor()
+        product_id = request.form.get('product_id')
+        cn.execute(f"DELETE FROM product WHERE product_id = '{product_id}'")
+        conn.commit()
+        print('Data has been deleted successfully')
+        return jsonify({'message': 'success'})
+    else:
+        return render_template('deleteproduct.html')
+
+
 
 
 
