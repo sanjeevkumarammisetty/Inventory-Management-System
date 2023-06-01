@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Flask Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .option {
+            flex-basis: 200px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .option-icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .option-label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .customer {
+            background-color: #63c76a;
+            color: #fff;
+        }
+
+        .product {
+            background-color: #f6b73c;
+            color: #fff;
+        }
+
+        .orders {
+            background-color: #4e9fd1;
+            color: #fff;
+        }
+
+        .supplier {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to SmartInventory: Simplify Your Inventory Management</h1>
+
+        <div class="section">
+            <h2 class="section-title">Customers</h2>
+            <div class="options">
+                <a href="/add-customer" class="option customer">
+                    <span class="option-icon">&#43;</span>
+                    <span class="option-label">Add</span>
+                </a>
+                <a href="/update-customer" class="option customer">
+                    <span class="option-icon">&#9998;</span>
+                    <span class="option-label">Update</span>
+                </a>
+                <a href="#" class="option customer">
+                    <span class="option-icon">&#10006;</span>
+                    <span class="option-label">Delete</span>
+                </a>
+                <a href="/show-customers" class="option customer">
+                    <span class="option-icon">&#128065;</span>
+                    <span class="option-icon">Show</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Products</h2>
+            <div class="options">
+                <a href="/add-products" class="option product">
+                    <span class="option-icon">&#43;</span>
+                    <span class="option-label">Add</span>
+                </a>
+                <a href="/update-product" class="option product">
+                    <span class="option-icon">&#9998;</span>
+                    <span class="option-label">Update</span>
+                </a>
+                <a href="#" class="option product">
+                    <span class="option-icon">&#10006;</span>
+                    <span class="option-label">Delete</span>
+                </a>
+                <a href="/show-product" class="option product">
+                    <span class="option-icon">&#128065;</span>
+                    <span class="option-label">Show</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Orders</h2>
+            <div class="options">
+                <a href="/add-orders" class="option orders">
+                    <span class="option-icon">&#43;</span>
+                    <span class="option-label">Add</span>
+                </a>
+                <a href="/update-orders" class="option orders">
+                    <span class="option-icon">&#9998;</span>
+                    <span class="option-label">Update</span>
+                </a>
+                <a href="#" class="option orders">
+                    <span class="option-icon">&#10006;</span>
+                    <span class="option-label">Delete</span>
+                </a>
+                <a href="/show-orders" class="option orders">
+                    <span class="option-icon">&#128065;</span>
+                    <span class="option-label">Show</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Suppliers</h2>
+            <div class="options">
+                <a href="/add-supplier" class="option supplier">
+                    <span class="option-icon">&#43;</span>
+                    <span class="option-label">Add</span>
+                </a>
+                <a href="/update-supplier" class="option supplier">
+                    <span class="option-icon">&#9998;</span>
+                    <span class="option-label">Update</span>
+                </a>
+                <a href="#" class="option supplier">
+                    <span class="option-icon">&#10006;</span>
+                    <span class="option-label">Delete</span>
+                </a>
+                <a href="/show-supplier" class="option supplier">
+                    <span class="option-icon">&#128065;</span>
+                    <span class="option-label">Show</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
