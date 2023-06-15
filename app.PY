@@ -275,7 +275,7 @@ def deletesupplier():
         
         conn.commit()
         print('Data has been deleted successfully')
-        return jsonify({'message': 'success'})
+        return jsonify({'message':'success'})
     else:
         return render_template('deletesupplier.html')
 
