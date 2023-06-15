@@ -208,26 +208,39 @@ def updatesupplier():
         return render_template('updatesuppliers.html')
     
 
-@app.route('/delete-customer',methods=['GET','POST'])
-def delete_customer():
-    if request.method=='POST':
-        cn=conn.cursor()
+@app.route('/delete-customer', methods=['GET', 'POST'])
+def deletecustomer():
+    if request.method == 'POST':
+        cn = conn.cursor()
         customerid = request.form.get('customer_id')
-        cn.execute(f"delete from customer where customer_id = '{customerid}'")
+        
+        # Delete related records from ORDERS table
+        cn.execute(f"DELETE FROM ORDERS WHERE CUSTOMER_ID = '{customerid}'")
+        
+        # Delete the customer
+        cn.execute(f"DELETE FROM CUSTOMER WHERE CUSTOMER_ID = '{customerid}'")
+        
         conn.commit()
-        print('Data has been deleted successfully ')
-        return jsonify({'message':'successful'})
+        print('Data has been deleted successfully')
+        return jsonify({'message': 'success'})
     else:
         return render_template('deletecustomer.html')
+
     
 
 
 @app.route('/delete-product', methods=['GET', 'POST'])
-def delete_product():
+def deleteproduct():
     if request.method == 'POST':
         cn = conn.cursor()
         product_id = request.form.get('product_id')
-        cn.execute(f"DELETE FROM product WHERE product_id = '{product_id}'")
+        
+        # Delete related records from ORDERS table
+        cn.execute(f"DELETE FROM ORDERS WHERE PRODUCT_ID = '{product_id}'")
+        
+        # Delete the product
+        cn.execute(f"DELETE FROM PRODUCT WHERE PRODUCT_ID = '{product_id}'")
+        
         conn.commit()
         print('Data has been deleted successfully')
         return jsonify({'message': 'success'})
@@ -235,6 +248,36 @@ def delete_product():
         return render_template('deleteproduct.html')
 
 
+@app.route('/delete-orders', methods=['GET', 'POST'])
+def deleteorders():
+    if request.method == 'POST':
+        cn = conn.cursor()
+        order_id = request.form.get('order_id')
+        
+        # Delete the order
+        cn.execute(f"DELETE FROM ORDERS WHERE ORDER_ID = '{order_id}'")
+        
+        conn.commit()
+        print('Data has been deleted successfully')
+        return jsonify({'message': 'success'})
+    else:
+        return render_template('deleteorders.html')
+
+
+@app.route('/delete-supplier', methods=['GET', 'POST'])
+def deletesupplier():
+    if request.method == 'POST':
+        cn = conn.cursor()
+        supplier_id = request.form.get('supplier_id')
+        
+        # Delete the supplier
+        cn.execute(f"DELETE FROM SUPPLIER WHERE SUPPLIER_ID = '{supplier_id}'")
+        
+        conn.commit()
+        print('Data has been deleted successfully')
+        return jsonify({'message': 'success'})
+    else:
+        return render_template('deletesupplier.html')
 
 
 
